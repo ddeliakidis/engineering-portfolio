@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whear — RFID Smart-Closet (ESE 3500)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #3b82f6;
+            --text-primary: #1f2937;
+            --text-secondary: #4b5563;
+            --bg-light: #f3f4f6;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-primary);
+            background-color: var(--bg-light);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="flex items-center space-x-2 text-gray-900 hover:text-primary-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                    </svg>
+                    <span>Back to Portfolio</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Project Hero -->
+    <section class="bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="inline-block px-3 py-1 mb-4 text-sm font-medium rounded-full bg-blue-100 text-primary-700">ESE 3500 · Embedded Systems</span>
+                    <h1 class="text-4xl font-bold text-gray-900 mb-6">Whear — RFID Smart Closet</h1>
+                    <p class="text-xl text-gray-600 mb-8">A closet-inventory system that reads laundry-tagged garments over UHF RFID, tracks them on a bare-metal STM32, and mirrors the live wardrobe to the cloud and an iOS app.</p>
+                    <div class="bg-gray-50 rounded-lg p-6 mb-8">
+                        <h2 class="text-xl font-semibold mb-4">Project Overview</h2>
+                        <ul class="space-y-2 text-gray-600">
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 mr-2 mt-1 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                </svg>
+                                Hand-written YRM100 (Impinj R2000) UHF RFID driver — frame parser + multi-inventory state machine
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 mr-2 mt-1 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                </svg>
+                                Bare-metal STM32F411RE runtime — IRQ-driven UART, SPI LCD, bit-banged NeoPixel ring
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 mr-2 mt-1 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                </svg>
+                                ESP32 → Firestore → SwiftUI app, sub-3-second end-to-end presence updates
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="https://upenn-embedded.github.io/final-project-whear/" target="_blank" class="inline-flex items-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                            </svg>
+                            Project Site
+                        </a>
+                        <a href="https://github.com/upenn-embedded/final-project-whear" target="_blank" class="inline-flex items-center px-5 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.776.418-1.305.762-1.605-2.665-.305-5.467-1.332-5.467-5.93 0-1.31.468-2.38 1.236-3.22-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23A11.5 11.5 0 0112 5.8c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.873.118 3.176.77.84 1.235 1.91 1.235 3.22 0 4.61-2.806 5.622-5.479 5.92.43.372.823 1.102.823 2.222 0 1.604-.015 2.896-.015 3.286 0 .322.218.696.825.578C20.565 21.795 24 17.297 24 12c0-6.63-5.37-12-12-12z"/>
+                            </svg>
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <img src="whear-1.jpg" alt="Whear hardware enclosure" class="rounded-lg shadow-xl w-full object-cover">
+                    <p class="mt-3 text-sm text-gray-500 text-center">The Whear unit — 3D-printed enclosure with the reader, antenna, and electronics designed to hang on a closet rod.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Details -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Technical Details -->
+                <div class="col-span-2 space-y-8">
+                    <div class="bg-white rounded-lg p-8 shadow-sm">
+                        <h2 class="text-2xl font-bold mb-6">How It Works</h2>
+                        <div class="prose max-w-none">
+                            <p class="text-gray-600 mb-4">
+                                Laundry-tagged garments carry passive 96-bit EPC RFID tags. A YRM100 UHF reader over a 6 dBi patch antenna inventories them and streams frames to a bare-metal STM32F411RE, which maintains a presence table with a 2-second time-to-live, surfaces live state on an ST7735 LCD and a 12-LED NeoPixel status ring, and frames the current set over UART to an ESP32 Feather. The ESP32 reconciles that set against Google Firestore, which a SwiftUI iOS app mirrors as a live closet dashboard.
+                            </p>
+                            <h3 class="text-xl font-semibold mb-4 mt-6">My Embedded Contributions</h3>
+                            <ul class="list-disc pl-5 space-y-2 text-gray-600">
+                                <li>A from-scratch YRM100 driver — byte-level frame parser, checksum logic, multi-inventory state machine, and region / TX-power configuration — built from only the manufacturer's wire-protocol PDF</li>
+                                <li>An IRQ-driven UART RX path (1024-byte ring buffer) that eliminated the back-to-back inventory desync seen in earlier sprints</li>
+                                <li>A bare-register ST7735 LCD driver over SPI1 and a bit-banged WS2812 NeoPixel driver on a single GPIO</li>
+                                <li>A from-scratch STM32 runtime: clock init, three USARTs, SysTick, and a deterministic framer to the ESP32</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Results -->
+                    <div class="bg-white rounded-lg p-8 shadow-sm">
+                        <h2 class="text-2xl font-bold mb-6">Results</h2>
+                        <p class="text-gray-600 mb-4">
+                            Whear shipped as a working closet-inventory system that met every hardware and software requirement. On the cloud side, switching from a GET-every-cycle Firestore reconciler to a primed-cache diff made a 300 ms uplink cadence feasible and delivered sub-3-second end-to-end latency. UHF tags on hanging garments were reliably detected past 1.5 m through fabric, and the whole system was packaged on a soldered perfboard inside a symmetric 3D-printed enclosure that hangs balanced on a closet rod — no breadboards, no flying jumpers.
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+                            <img src="whear-2.jpg" alt="Whear hardware detail" class="rounded-lg w-full h-56 object-cover">
+                            <img src="whear-3.jpg" alt="Whear hardware detail" class="rounded-lg w-full h-56 object-cover">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="space-y-6">
+                    <!-- Technologies -->
+                    <div class="bg-white rounded-lg p-6 shadow-sm">
+                        <h3 class="text-xl font-semibold mb-4">Stack</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">STM32F411RE</span>
+                            <span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">Bare-metal C</span>
+                            <span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">UHF RFID</span>
+                            <span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">UART / SPI</span>
+                            <span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">WS2812</span>
+                            <span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">ESP32</span>
+                            <span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">Firestore</span>
+                            <span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">SwiftUI</span>
+                        </div>
+                    </div>
+
+                    <!-- Highlights -->
+                    <div class="bg-white rounded-lg p-6 shadow-sm">
+                        <h3 class="text-xl font-semibold mb-4">Highlights</h3>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start">
+                                <div class="w-2 h-2 mt-2 bg-primary-600 rounded-full flex-shrink-0"></div>
+                                <p class="ml-3">Industrial Impinj R2000 RFID driver written entirely from the datasheet</p>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="w-2 h-2 mt-2 bg-primary-600 rounded-full flex-shrink-0"></div>
+                                <p class="ml-3">&gt;1.5 m read range through fabric; sub-3 s cloud-to-app latency</p>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="w-2 h-2 mt-2 bg-primary-600 rounded-full flex-shrink-0"></div>
+                                <p class="ml-3">Product-grade perfboard build inside a balanced printed enclosure</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Details -->
+                    <div class="bg-white rounded-lg p-6 shadow-sm">
+                        <h3 class="text-xl font-semibold mb-4">Details</h3>
+                        <div class="space-y-3 text-gray-600">
+                            <p><strong>Course:</strong> ESE 3500, University of Pennsylvania</p>
+                            <p><strong>Team:</strong> Jefferson Ding, Dimitris Deliakidis, Carly Googel</p>
+                            <p><strong>My role:</strong> Firmware / hardware integration</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <p>&copy; 2025 Dimitris Deliakidis. All rights reserved.</p>
+                <a href="index.html" class="text-white hover:text-primary-400">Back to Portfolio</a>
+            </div>
+        </div>
+      </footer>
+</body>
+</html>

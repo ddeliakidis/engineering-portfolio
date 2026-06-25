@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Penn Electric Racing Projects - Dimitris Deliakidis</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+  <!-- Header -->
+  <header class="bg-white shadow-sm">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <div class="flex justify-between items-center">
+        <div class="flex items-center space-x-8">
+          <div class="flex space-x-8">
+            <a href="Portfolio.html" class="nav-link text-gray-700 hover:text-primary-600">Home</a>
+            <a href="cv.pdf" target="_blank" class="nav-link text-gray-700 hover:text-primary-600">Resume</a>
+            <a href="Portfolio.html#projects" class="nav-link text-gray-700 hover:text-primary-600">Projects</a>
+            <a href="Portfolio.html#about" class="nav-link text-gray-700 hover:text-primary-600">About</a>
+            <a href="Portfolio.html#contact" class="nav-link text-gray-700 hover:text-primary-600">Contact</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Project Content -->
+  <main class="max-w-7xl mx-auto px-4 py-12">
+    <div class="mb-12">
+      <div class="flex items-center mb-8">
+        <img src="logo.png" alt="Penn Electric Racing Logo" class="h-16 w-auto mr-6">
+        <h1 class="text-4xl font-bold text-gray-900">Penn Electric Racing Projects</h1>
+      </div>
+      <p class="text-xl text-gray-600">Contributing to Penn's award-winning Formula SAE Electric Vehicle team through innovative hardware solutions.</p>
+    </div>
+
+    <div class="grid grid-cols-1 gap-12">
+      <!-- HIL Board Project -->
+      <article class="bg-white rounded-xl shadow-lg overflow-hidden">
+        <div class="p-8">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">Hardware-in-the-Loop (HIL) Testing System</h2>
+          
+          <section class="mb-8">
+            <h3 class="text-2xl font-semibold text-gray-900 mb-4">Project Overview</h3>
+            <p class="text-gray-600 mb-4">
+              Developed a sophisticated testing system that enables Hardware-in-the-Loop (HIL) testing to validate critical vehicle functions. The system specifically ensures proper operation of crucial components like the brake sensor, Ready-To-Drive-Sound (RTDS), and Super Capacitor (SCAP) systems. This testing adapter is instrumental in validating critical functions that interface between both the Power Control Module (PCM) and the Data Acquisition Dashboard (DAQDASH).
+            </p>
+            <div class="bg-gray-50 p-6 rounded-lg mb-6">
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <img src="pcb-hil.png" alt="HIL Testing System" class="w-full h-64 object-contain mb-4">
+                  <p class="text-sm text-gray-500 text-center">Hardware-in-the-Loop Testing Board</p>
+                </div>
+                <div>
+                  <img src="hil-schematic.png" alt="Hil schematic" class="w-full h-64 object-contain mb-4">
+                  <p class="text-sm text-gray-500 text-center">HIL System Implementation</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="mb-8">
+            <h3 class="text-2xl font-semibold text-gray-900 mb-4">Key Features</h3>
+            <ul class="list-disc list-inside space-y-2 text-gray-600">
+              <li>Real-time simulation of vehicle sensor inputs and actuator outputs</li>
+              <li>Comprehensive testing environment for embedded software validation</li>
+              <li>Automated test sequence capabilities</li>
+              <li>Data logging and analysis tools</li>
+              <li>Configurable fault injection for robustness testing</li>
+            </ul>
+          </section>
+        </div>
+      </article>
+
+      <!-- PCB Design Project -->
+      <article class="bg-white rounded-xl shadow-lg overflow-hidden">
+        <div class="p-8">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">Advanced PCB Design</h2>
+          
+          <section class="mb-8">
+            <h3 class="text-2xl font-semibold text-gray-900 mb-4">Project Overview</h3>
+            <p class="text-gray-600 mb-4">
+              Designed and developed critical PCBs for the Formula SAE Electric Vehicle, focusing on reliability, performance, and safety. These boards are essential components of the vehicle's electrical system.
+            </p>
+            <div class="bg-gray-50 p-6 rounded-lg mb-6">
+              <img src="BSPD_pcb.png" alt="PCB Design" class="w-full max-h-96 object-contain mb-4">
+              <p class="text-sm text-gray-500 text-center">Custom PCB Design for Vehicle Systems</p>
+            </div>
+          </section>
+
+          <section class="mb-8">
+            <h3 class="text-2xl font-semibold text-gray-900 mb-4">Technical Details</h3>
+            <ul class="list-disc list-inside space-y-2 text-gray-600">
+              <li>Multi-layer PCB design using Altium Designer</li>
+              <li>Implementation of safety-critical circuits</li>
+              <li>Integration with vehicle CAN bus network</li>
+              <li>EMI/EMC considerations and testing</li>
+              <li>Thermal management and power distribution</li>
+            </ul>
+          </section>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-8 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center">
+        <p>&copy; 2024 Dimitris Deliakidis. All rights reserved.</p>
+        <div class="flex space-x-6">
+          <a href="#top" class="hover:text-primary-400">Back to Top</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html> 

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peak Detector Project - Dimitris Deliakidis</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+  <!-- Header -->
+  <header class="bg-white shadow-sm">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <div class="flex justify-between items-center">
+        <div class="flex items-center space-x-8">
+          <div class="flex space-x-8">
+            <a href="Portfolio.html" class="nav-link text-gray-700 hover:text-primary-600">Home</a>
+            <a href="cv.pdf" class="nav-link text-gray-700 hover:text-primary-600">Resume</a>
+            <a href="#projects" class="nav-link text-gray-700 hover:text-primary-600">Projects</a>
+            <a href="#about" class="nav-link text-gray-700 hover:text-primary-600">About</a>
+            <a href="#contact" class="nav-link text-gray-700 hover:text-primary-600">Contact</a>
+          </div>
+        </div>
+        <a href="random-projects.html" class="text-gray-600 hover:text-primary-600 flex items-center">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+          </svg>
+          Back to Random Projects
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Project Content -->
+  <main class="max-w-4xl mx-auto px-4 py-12">
+    <article class="bg-white rounded-xl shadow-lg overflow-hidden">
+      <div class="p-8">
+        <h1 class="text-3xl font-bold text-gray-900 mb-6">Peak Detector Circuit</h1>
+        
+        <section class="mb-8">
+          <h2 class="text-2xl font-semibold text-gray-900 mb-4">Project Overview</h2>
+          <p class="text-gray-600 mb-4">
+            Props to professor Sid who I was talking to and told me: this would be a great 112 hacking project! This project makes a circuit that can detect the peak value of an incoming signal. Our goal is to find and output the peak value of an incoming wave — for example, a sine wave.
+          </p>
+        </section>
+
+        <section class="mb-8">
+          <h2 class="text-2xl font-semibold text-gray-900 mb-4">Basic Circuit Design</h2>
+          <p class="text-gray-600 mb-4">
+            This can be achieved by wiring a diode and a capacitor in a specific configuration. The capacitor gets charged to the highest value of the incoming wave. When the input signal is rising, the diode conducts, allowing the capacitor to charge up. But once the input starts to drop, the diode becomes reverse biased and blocks the current from flowing back — preventing the capacitor from discharging. Just like that, the capacitor "holds" the peak voltage.
+          </p>
+          <div class="bg-gray-50 p-6 rounded-lg mb-6">
+            <img src="diagram.jpg" alt="Basic Peak Detector Circuit" class="mx-auto max-h-64 w-auto object-contain mb-4">
+            <p class="text-sm text-gray-500 text-center">Basic Peak Detector Circuit Configuration</p>
+          </div>
+        </section>
+
+        <section class="mb-8">
+          <h2 class="text-2xl font-semibold text-gray-900 mb-4">The Diode Problem</h2>
+          <p class="text-gray-600 mb-4">
+            However, we encountered an important challenge: diodes have a forward voltage drop (typically ~0.7V for silicon diodes, ~0.3V for Schottky diodes). This means the capacitor won't quite reach the actual peak. In our 5V example, with a silicon diode, the capacitor might only charge up to about 4.3V instead of the full 5V, lowering the amplitude of the output and making our peak detection inaccurate.
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div class="bg-gray-50 p-4 rounded-lg">
+              <img src="ideal-diode.png" alt="Ideal Diode Simulation" class="w-full h-48 object-contain mb-2">
+              <p class="text-sm text-gray-500 text-center">Ideal Diode Simulation (Green: input, Blue: output)</p>
+            </div>
+            <div class="bg-gray-50 p-4 rounded-lg">
+              <img src="NonIdealDiode.png" alt="Non-Ideal Diode Simulation" class="w-full h-48 object-contain mb-2">
+              <p class="text-sm text-gray-500 text-center">Non-Ideal Diode Simulation (Blue: input, Green: output)</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="mb-8">
+          <h2 class="text-2xl font-semibold text-gray-900 mb-4">The Op-Amp Solution</h2>
+          <p class="text-gray-600 mb-4">
+            One solution to this is to use a precision peak detector using an op-amp in combination with the diode — the op-amp compensates for the voltage drop, allowing the capacitor to charge right up to the actual peak.
+          </p>
+          <div class="bg-gray-50 p-6 rounded-lg mb-6">
+            <h3 class="text-xl font-semibold mb-4">Op-Amp Working Principle</h3>
+            <p class="text-gray-600 mb-4">
+              Op-amps always try to make the voltage difference between the + and − inputs zero (thanks to the high open-loop gain and feedback). When the + input is given a voltage Vin, the op-amp adjusts its output so that the − input matches Vin. Since the − input is tied directly to the output, the output voltage must also be Vin.
+            </p>
+            <p class="text-lg font-semibold text-center text-primary-600">Result: Vout = Vin</p>
+          </div>
+        </section>
+
+        <section class="mb-8">
+          <h2 class="text-2xl font-semibold text-gray-900 mb-4">Final Implementation</h2>
+          <p class="text-gray-600 mb-4">
+            The final design includes a buffer, typically an op-amp configured as a voltage follower, added after the peak detector circuit to preserve the stored peak voltage. Since the capacitor in the peak detector holds the peak, directly connecting a load would cause it to discharge and lose accuracy. The buffer prevents this by:
+          </p>
+          <ul class="list-disc list-inside space-y-2 text-gray-600 mb-6">
+            <li>Presenting a high input impedance (drawing almost no current)</li>
+            <li>Providing a low output impedance (safely driving other circuits)</li>
+            <li>Effectively isolating the capacitor</li>
+            <li>Maintaining the peak voltage for further processing</li>
+          </ul>
+          <div class="bg-gray-50 p-6 rounded-lg">
+            <img src="opAm.png" alt="Final Circuit with Buffer" class="mx-auto max-h-64 w-auto object-contain mb-4">
+            <p class="text-sm text-gray-500 text-center">Final Peak Detector Circuit with Buffer Stage</p>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-semibold text-gray-900 mb-4">Testing Results</h2>
+          <p class="text-gray-600 mb-4">
+            Using LTSpice for simulation, we tested the circuit with a sine wave of 5Vpp at 100Hz. The results showed accurate peak detection with minimal voltage drop, thanks to the op-amp compensation and buffer stage implementation.
+          </p>
+        </section>
+      </div>
+    </article>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-8 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center">
+        <p>&copy; 2025 Dimitris Deliakidis. All rights reserved.</p>
+        <div class="flex space-x-6">
+          <a href="#top" class="hover:text-primary-400">Back to Top</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html> 

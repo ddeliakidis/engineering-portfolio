@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Project - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #3b82f6;
+            --text-primary: #1f2937;
+            --text-secondary: #4b5563;
+            --bg-light: #f3f4f6;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-primary);
+            background-color: var(--bg-light);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex justify-between items-center">
+                <a href="Portfolio.html" class="flex items-center space-x-2 text-gray-900 hover:text-primary-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                    </svg>
+                    <span>Back to Portfolio</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Project Hero -->
+    <section class="bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <h1 class="text-4xl font-bold text-gray-900 mb-6">Random Project</h1>
+                    <p class="text-xl text-gray-600 mb-8">Description of your random project and its key features.</p>
+                    <div class="bg-gray-50 rounded-lg p-6 mb-8">
+                        <h2 class="text-xl font-semibold mb-4">Project Overview</h2>
+                        <ul class="space-y-2 text-gray-600">
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                </svg>
+                                Feature 1
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                </svg>
+                                Feature 2
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                </svg>
+                                Feature 3
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <img src="random.jpg" alt="Random Project" class="rounded-lg shadow-xl w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Details -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Technical Details -->
+                <div class="col-span-2 space-y-8">
+                    <div class="bg-white rounded-lg p-8 shadow-sm">
+                        <h2 class="text-2xl font-bold mb-6">Technical Details</h2>
+                        <div class="prose max-w-none">
+                            <p class="text-gray-600 mb-4">
+                                Detailed description of the technical aspects of your random project.
+                            </p>
+                            <h3 class="text-xl font-semibold mb-4">Key Features</h3>
+                            <ul class="list-disc pl-5 space-y-2 text-gray-600">
+                                <li>Feature detail 1</li>
+                                <li>Feature detail 2</li>
+                                <li>Feature detail 3</li>
+                                <li>Feature detail 4</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Implementation -->
+                    <div class="bg-white rounded-lg p-8 shadow-sm">
+                        <h2 class="text-2xl font-bold mb-6">Implementation</h2>
+                        <p class="text-gray-600">
+                            Description of how you implemented this project, including any challenges faced and solutions developed.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="space-y-6">
+                    <!-- Technologies Used -->
+                    <div class="bg-white rounded-lg p-6 shadow-sm">
+                        <h3 class="text-xl font-semibold mb-4">Technologies Used</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-center text-gray-600">
+                                <svg class="w-5 h-5 mr-2 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                                </svg>
+                                Technology 1
+                            </li>
+                            <li class="flex items-center text-gray-600">
+                                <svg class="w-5 h-5 mr-2 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                                </svg>
+                                Technology 2
+                            </li>
+                            <li class="flex items-center text-gray-600">
+                                <svg class="w-5 h-5 mr-2 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                                </svg>
+                                Technology 3
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Project Timeline -->
+                    <div class="bg-white rounded-lg p-6 shadow-sm">
+                        <h3 class="text-xl font-semibold mb-4">Project Timeline</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-primary-600 rounded-full"></div>
+                                <div class="ml-4">
+                                    <p class="font-medium">Project Start</p>
+                                    <p class="text-sm text-gray-600">Start Date</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-primary-600 rounded-full"></div>
+                                <div class="ml-4">
+                                    <p class="font-medium">Development</p>
+                                    <p class="text-sm text-gray-600">Development Period</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-primary-600 rounded-full"></div>
+                                <div class="ml-4">
+                                    <p class="font-medium">Completion</p>
+                                    <p class="text-sm text-gray-600">End Date</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <p>&copy; 2024 Your Name. All rights reserved.</p>
+                <a href="Portfolio.html" class="text-white hover:text-primary-400">Back to Portfolio</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 

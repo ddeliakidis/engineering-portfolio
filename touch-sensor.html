@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Touch Sensor Project - Dimitris Deliakidis</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+  <!-- Header -->
+  <header class="bg-white shadow-sm">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <div class="flex justify-between items-center">
+        <div class="flex items-center space-x-8">
+          <div class="flex space-x-8">
+            <a href="index.html" class="nav-link text-gray-700 hover:text-primary-600">Home</a>
+            <a href="cv.pdf" class="nav-link text-gray-700 hover:text-primary-600">Resume</a>
+            <a href="#projects" class="nav-link text-gray-700 hover:text-primary-600">Projects</a>
+            <a href="#about" class="nav-link text-gray-700 hover:text-primary-600">About</a>
+            <a href="#contact" class="nav-link text-gray-700 hover:text-primary-600">Contact</a>
+          </div>
+        </div>
+        <a href="random-projects.html" class="text-gray-600 hover:text-primary-600 flex items-center">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+          </svg>
+          Back to Random Projects
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Project Content -->
+  <main class="max-w-4xl mx-auto px-4 py-12">
+    <article class="bg-white rounded-xl shadow-lg overflow-hidden">
+      <div class="p-8">
+        <h1 class="text-3xl font-bold text-gray-900 mb-6">DIY Touch Sensor</h1>
+        
+        <section class="mb-8">
+          <h2 class="text-2xl font-semibold text-gray-900 mb-4">Completed Circuit</h2>
+          <p class="text-gray-600 mb-4">
+            Remember the conceptual question in Lab 1? It really sounded like a good challenge to take on: build a touch sensor out of what I've learned so far on the course. Here's what I made, and I will walk you through my reasoning and implementation.
+          </p>
+          <div class="bg-gray-50 p-6 rounded-lg mb-6">
+            <h3 class="text-xl font-semibold mb-4">Demo Video</h3>
+            <div class="aspect-w-16 aspect-h-9">
+              <video 
+                class="w-full rounded-lg shadow-lg" 
+                controls
+                poster="penn-engineering.png">
+                <source src="touchsensor.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <p class="text-sm text-gray-500 text-center mt-4">Working demonstration of the touch sensor circuit</p>
+          </div>
+        </section>
+
+        <section class="mb-8">
+          <h2 class="text-2xl font-semibold text-gray-900 mb-4">Theory First</h2>
+          <div class="bg-gray-50 p-4 rounded-lg mb-4">
+            <p class="text-lg font-semibold text-center">τ = RC</p>
+          </div>
+          <p class="text-gray-600 mb-4">
+            Remember this formula? It tells us that an RC circuit's time constant depends on resistance and capacitance. In Lab 1, we demonstrated that we could detect this change using an oscilloscope. So, if I find a way to alter this time constant slightly, I should be able to measure the change—potentially indicating when the touch sensor has been activated.
+          </p>
+          <p class="text-gray-600 mb-4">
+            Alright, but how do I change the time constant? Resistance depends on material properties, so I don't see an obvious way to modify it. However, as we saw in lecture, capacitance is purely a geometric parameter. According to the geometric formula, if I change the distance between the plates of a capacitor, that should result in the variation we're looking for.
+          </p>
+          <p class="text-gray-600 mb-4">
+            So, the concept is simple—every time I press on one plate of a capacitor, the distance between the plates changes slightly, which in turn alters the capacitance. Eureka!
+          </p>
+        </section>
+
+        <section class="mb-8">
+          <h2 class="text-2xl font-semibold text-gray-900 mb-4">Actually building stuff</h2>
+          <p class="text-gray-600 mb-4">
+            Now, all that's left is to build a homemade capacitor using two copper plates and a sheet of paper as the dielectric in the middle. We can also use the capacitance's geometric formula to find our capacitor's capacitance. Mine is around 73 pF.
+          </p>
+          <p class="text-gray-600 mb-4">
+            It sounds simple, but if you really think about it, capacitors are this simple.
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+            <div class="bg-gray-50 p-4 rounded-lg">
+              <img src="touch-sensor-1.jpg" alt="Touch Sensor Setup" class="w-full h-64 object-cover rounded-lg mb-2">
+              <p class="text-sm text-gray-500 text-center">Complete circuit setup with Arduino and components</p>
+            </div>
+            <div class="bg-gray-50 p-4 rounded-lg">
+              <img src="touch-sensor-2.jpg" alt="Touch Sensor in Action" class="w-full h-64 object-cover rounded-lg mb-2">
+              <p class="text-sm text-gray-500 text-center">Touch sensor responding to input with LED indicator</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="mb-8">
+          <h2 class="text-2xl font-semibold text-gray-900 mb-4">Implementation Details</h2>
+          <p class="text-gray-600 mb-4">
+            When applying a square wave signal to an RC circuit built with our homemade capacitor and observing it on an oscilloscope, we'll see the characteristic charging and discharging behavior of the capacitor. When pressing the plates of the capacitor we can clearly see the increase in discharge time.
+          </p>
+          
+          <div class="bg-gray-50 p-6 rounded-lg mb-6">
+            <h3 class="text-xl font-semibold mb-4">Key Components</h3>
+            <ul class="list-disc list-inside space-y-2 text-gray-600">
+              <li>Digital Pin (Arduino): Acts as a pulse generator</li>
+              <li>Resistor R=1MΩ: Controls the charging time</li>
+              <li>Capacitor Ch​: Represents the inherent capacitance of the breadboard</li>
+              <li>Capacitor Cb: Our DIY capacitor</li>
+              <li>Analog Pin (Arduino Input): Reads the voltage across the capacitor</li>
+            </ul>
+          </div>
+
+          <h3 class="text-xl font-semibold mb-4">Operation Sequence</h3>
+          <ul class="list-disc list-inside space-y-2 text-gray-600 mb-6">
+            <li>The capacitor is charged by setting the digital pin HIGH for a short time</li>
+            <li>The capacitor is then discharged, and the Arduino starts measuring time using an analog pin</li>
+            <li>The loop waits until the analog reading drops below 0.37 percent of the original voltage threshold</li>
+            <li>The elapsed time (microseconds) is printed to the Serial Monitor</li>
+            <li>If the elapsed time is bigger than a certain threshold, we turn the LED on</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-semibold text-gray-900 mb-4">Conclusion</h2>
+          <p class="text-gray-600 mb-4">
+            That's it! We just made a touch sensor. More ways we could have approached our capacitive sensor are using our body's internal capacitance as the second plate of our DIY cap or placing cap plates and using our finger to disrupt the electric field. Finally, what we've just built is not very far from how actual touchscreens work.
+          </p>
+        </section>
+      </div>
+    </article>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-8 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center">
+        <p>&copy; 2024 Dimitris Deliakidis. All rights reserved.</p>
+        <div class="flex space-x-6">
+          <a href="#top" class="hover:text-primary-400">Back to Top</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html> 

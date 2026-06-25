@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electrical Engineering Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  
+  <!-- Firebase SDK -->
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+  apiKey: "AIzaSyBEKy99_8IP-rLz-7n85f_w7PFmKYYUK3w",
+  authDomain: "dimitris-portfolio-a53b4.firebaseapp.com",
+  projectId: "dimitris-portfolio-a53b4",
+  storageBucket: "dimitris-portfolio-a53b4.firebasestorage.app",
+  messagingSenderId: "173093355160",
+  appId: "1:173093355160:web:4189d5db16e10ae2e15aed",
+  measurementId: "G-MQ6GDVJML8"
+};
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const db = getFirestore(app);
+
+    // Make Firebase available globally
+    window.firebase = { app, analytics, db, addDoc, collection };
+  </script>
+  
+  <style>
+    /* Custom styles */
+    :root {
+      --primary-color: #2563eb;
+      --secondary-color: #1e40af;
+      --accent-color: #3b82f6;
+      --text-primary: #1f2937;
+      --text-secondary: #4b5563;
+      --bg-light: #f3f4f6;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-color: var(--bg-light);
+      color: var(--text-primary);
+    }
+
+    .custom-scrollbar {
+      scrollbar-width: thin;
+      scrollbar-color: var(--text-secondary) var(--bg-light);
+    }
+
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background-color: var(--text-secondary);
+      border-radius: 3px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background-color: var(--bg-light);
+    }
+
+    .project-card {
+      transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-link {
+      position: relative;
+      transition: color 0.2s ease-in-out;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -2px;
+      left: 0;
+      background-color: var(--primary-color);
+      transition: width 0.2s ease-in-out;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="bg-white shadow-sm">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <div class="flex justify-between items-center">
+        <div class="flex items-center space-x-8">
+          <div class="flex space-x-8">
+            <a href="#" class="nav-link text-gray-700 hover:text-primary-600">Home</a>
+            <a href="cv.pdf" target="_blank" class="nav-link text-gray-700 hover:text-primary-600">Resume</a>
+            <a href="#projects" class="nav-link text-gray-700 hover:text-primary-600">Projects</a>
+            <a href="#about" class="nav-link text-gray-700 hover:text-primary-600">About</a>
+            <a href="#contact" class="nav-link text-gray-700 hover:text-primary-600">Contact</a>
+          </div>
+        </div>
+        <a href="cv.pdf" target="_blank" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+          Download CV
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+            Dimitris Deliakidis
+            <span class="block text-primary-600">Electrical Engineer</span>
+          </h1>
+          <div class="mt-6 space-y-4">
+            <p class="text-xl text-gray-600 leading-relaxed">
+              Passionate about electronics and software. Always looking for new projects to work on. Open to hiring!
+            </p>
+          </div>
+          <div class="mt-8 flex space-x-4">
+            <a href="#projects" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700">
+              View Projects
+            </a>
+            <a href="#contact" class="inline-flex items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+              Contact Me
+            </a>
+          </div>
+        </div>
+        <div class="relative">
+          <img src="headshot.jpg" alt="Dimitris Deliakidis" class="rounded-lg shadow-xl w-full max-w-md mx-auto">
+          <div class="absolute -bottom-4 -right-4 bg-white p-4 rounded-lg shadow-lg">
+            <div class="flex items-center">
+              <img src="pennlogo.png" alt="Penn Logo" class="h-12 w-auto mr-2 object-contain">
+              <div>
+                <p class="text-sm font-medium text-gray-900">Electrical Engineering</p>
+                <p class="text-sm text-gray-600">University of Pennsylvania</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12">Featured Projects</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Aachen Research Card -->
+        <a href="aachen-research.html" class="project-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl">
+          <div class="h-48 bg-gray-900 flex items-center justify-center p-2">
+            <img src="aachen-droplets.png" alt="Acoustic Droplet Bioprinting" class="max-h-44 w-auto object-contain">
+          </div>
+          <div class="p-6">
+            <span class="inline-block px-2 py-0.5 mb-2 text-xs font-medium rounded-full bg-blue-100 text-primary-700">Summer Research · RWTH Aachen</span>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">Acoustic Droplet Bioprinting</h3>
+            <p class="text-gray-600">Computer-vision droplet detection, automated print quality assurance, and instrumentation for an acoustic bioprinter.</p>
+            <div class="mt-4 flex items-center text-primary-600">
+              <span>Learn more</span>
+              <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </div>
+          </div>
+        </a>
+
+        <!-- ModLab Touch Sensor Card -->
+        <a href="modlab.html" class="project-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl">
+          <div class="h-48 bg-white flex items-center justify-center p-4">
+            <img src="modlab-sensor.png" alt="Tactile Sensor Research" class="max-h-40 w-auto object-contain">
+          </div>
+          <div class="p-6">
+            <span class="inline-block px-2 py-0.5 mb-2 text-xs font-medium rounded-full bg-blue-100 text-primary-700">Research · Penn ModLab</span>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">Tactile Sensor Localization</h3>
+            <p class="text-gray-600">Characterizing a soft touch sensor and training ML models to predict contact position from a CNC-collected dataset.</p>
+            <div class="mt-4 flex items-center text-primary-600">
+              <span>Learn more</span>
+              <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </div>
+          </div>
+        </a>
+
+        <!-- Whear ESE 3500 Card -->
+        <a href="whear.html" class="project-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl">
+          <img src="whear-1.jpg" alt="Whear RFID Smart Closet" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <span class="inline-block px-2 py-0.5 mb-2 text-xs font-medium rounded-full bg-blue-100 text-primary-700">ESE 3500 · Embedded Systems</span>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">Whear — RFID Smart Closet</h3>
+            <p class="text-gray-600">A UHF-RFID closet inventory system on a bare-metal STM32, with a from-scratch reader driver, ESP32 uplink, and iOS app.</p>
+            <div class="mt-4 flex items-center text-primary-600">
+              <span>Learn more</span>
+              <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </div>
+          </div>
+        </a>
+
+        <!-- ESE 5760 SRAM Card -->
+        <a href="ese5760.html" class="project-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl">
+          <div class="h-48 bg-white flex items-center justify-center p-3">
+            <img src="ese5760-stability.png" alt="SRAM Cell Stability Study" class="max-h-44 w-auto object-contain">
+          </div>
+          <div class="p-6">
+            <span class="inline-block px-2 py-0.5 mb-2 text-xs font-medium rounded-full bg-blue-100 text-primary-700">ESE 5760 · IC Design</span>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">The Cost of Stability</h3>
+            <p class="text-gray-600">A comparative evaluation of 6T, 8T and 10T SRAM cells across seven technology nodes. Includes the full paper and poster with live preview.</p>
+            <div class="mt-4 flex items-center text-primary-600">
+              <span>Learn more</span>
+              <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </div>
+          </div>
+        </a>
+
+        <!-- ESE 3190 Metal Detector Card -->
+        <a href="ese3190.html" class="project-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl">
+          <div class="h-48 bg-white flex items-center justify-center p-2">
+            <img src="ese3190-pcb-top.png" alt="Analog Metal Detector PCB" class="max-h-44 w-auto object-contain">
+          </div>
+          <div class="p-6">
+            <span class="inline-block px-2 py-0.5 mb-2 text-xs font-medium rounded-full bg-blue-100 text-primary-700">ESE 3190 · Analog Design</span>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">Analog Metal Detector</h3>
+            <p class="text-gray-600">A discrete-MOSFET metal detector taken from hand calculations through SPICE, PCB layout, and bench test. Includes the full report.</p>
+            <div class="mt-4 flex items-center text-primary-600">
+              <span>Learn more</span>
+              <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </div>
+          </div>
+        </a>
+
+        <!-- CIS 5450 Diabetic Readmission Card -->
+        <a href="cis5450.html" class="project-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl">
+          <div class="h-48 bg-white flex items-center justify-center p-2">
+            <img src="cis5450-roc-pr.jpg" alt="Diabetic Readmission Prediction" class="max-h-44 w-auto object-contain">
+          </div>
+          <div class="p-6">
+            <span class="inline-block px-2 py-0.5 mb-2 text-xs font-medium rounded-full bg-blue-100 text-primary-700">CIS 5450 · Big Data Analytics</span>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">Predicting Diabetic Readmission</h3>
+            <p class="text-gray-600">An end-to-end big-data ML pipeline (DuckDB, SMOTE, XGBoost) predicting 30-day hospital readmission. Includes the full report.</p>
+            <div class="mt-4 flex items-center text-primary-600">
+              <span>Learn more</span>
+              <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </div>
+          </div>
+        </a>
+
+        <!-- Penn Electric Racing Card -->
+        <a href="penn-electric-racing.html" class="project-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl">
+          <div class="h-48 bg-white flex items-center justify-center p-4">
+            <img src="logo.png" alt="Penn Electric Racing" class="max-h-40 w-auto object-contain">
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">Penn Electric Racing</h3>
+            <p class="text-gray-600">Hardware-in-the-Loop Testing System and Advanced PCB Design for Formula SAE Electric Vehicle.</p>
+            <div class="mt-4 flex items-center text-primary-600">
+              <span>View Projects</span>
+              <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </div>
+          </div>
+        </a>
+
+        <!-- EcoBeam Project Card -->
+        <a href="ecobeam.html" class="project-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl">
+          <img src="ecobeam.jpg" alt="EcoBeam Project" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">EcoBeam Project</h3>
+            <p class="text-gray-600">First year design project for Penn's ESE department.</p>
+            <div class="mt-4 flex items-center text-primary-600">
+              <span>Learn more</span>
+              <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </div>
+          </div>
+        </a>
+
+        <!-- ESE 111 Handbook Card -->
+        <a href="ese111-handbook.pdf" class="project-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl">
+          <div class="h-48 bg-white flex items-center justify-center p-4">
+            <img src="penn-engineering.png" alt="ESE 111 Handbook" class="max-h-32 w-auto object-contain">
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">ESE 111 Handbook</h3>
+            <p class="text-gray-600">Tasked with creating a lab handbook for the introductory course in Penn's ESE department. Still a work in progress.</p>
+            <div class="mt-4 flex items-center text-primary-600">
+              <span>View Handbook</span>
+              <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </div>
+          </div>
+        </a>
+
+        <!-- Random Projects Card -->
+        <a href="random-projects.html" class="project-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl">
+          <div class="h-48 bg-white flex items-center justify-center p-4">
+            <div class="grid grid-cols-2 gap-2 w-full">
+              <img src="touch-sensor.jpg" alt="Touch Sensor" class="w-full h-20 object-cover rounded">
+              <img src="impedance-fail.png" alt="Amplifier" class="w-full h-20 object-cover rounded">
+              <img src="opAm.png" alt="Peak Detector" class="w-full h-20 object-cover rounded">
+              <div class="bg-gray-100 h-20 rounded flex items-center justify-center">
+                <span class="text-gray-600 text-sm">+More</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">Random Projects</h3>
+            <p class="text-gray-600">Collection of personal projects I did to expand my knowledge in electronics(and get that extra credit:).</p>
+            <div class="mt-4 flex items-center text-primary-600">
+              <span>View Collection</span>
+              <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12">Professional Experience</h2>
+      <div class="space-y-8">
+        <div class="bg-gray-50 rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex justify-between items-start">
+            <div>
+              <h3 class="text-xl font-semibold text-gray-900">Undergraduate Research Assistant</h3>
+              <p class="text-primary-600">RWTH Aachen University — Acoustic Droplet Bioprinting</p>
+            </div>
+            <p class="text-gray-600">Summer 2026</p>
+          </div>
+          <p class="mt-4 text-gray-600">
+            Built the computer-vision and instrumentation toolchain for an acoustic droplet-ejection bioprinter: an OpenCV pipeline that detects and indexes printed droplet grids and automatically scores print quality, plus an automated transfer pipeline, offline ultrasound peak-logging, and thermocouple firmware for live temperature monitoring.
+          </p>
+        </div>
+
+        <div class="bg-gray-50 rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex justify-between items-start">
+            <div>
+              <h3 class="text-xl font-semibold text-gray-900">Research Assistant — ModLab, GRASP Laboratory</h3>
+              <p class="text-primary-600">GRASP Laboratories</p>
+            </div>
+            <p class="text-gray-600">Jan 2026 - Present</p>
+          </div>
+          <p class="mt-4 text-gray-600">
+            Built an improved LED-based 6-axis force/torque sensor from the ground up — combining two custom PCB stacks, a compliant PDMS structure, and 24-channel optical sensing in a fingertip-scale 27 mm × 20.8 mm form factor. Improved measurement sensitivity by 35% through optical redesign, noise reduction, and ML-based calibration on 20/24 denoised channels at 500 Hz.
+          </p>
+        </div>
+
+        <div class="bg-gray-50 rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex justify-between items-start">
+            <div>
+              <h3 class="text-xl font-semibold text-gray-900">Teaching Assistant, ESE 2150 — Electrical Circuits and Systems</h3>
+              <p class="text-primary-600">University of Pennsylvania</p>
+            </div>
+            <p class="text-gray-600">2026</p>
+          </div>
+          <p class="mt-4 text-gray-600">
+            Supporting lectures and the weekly hands-on lab for Penn's core circuits course, helping students through linear circuit analysis, 1st- and 2nd-order circuits, transfer functions, and non-linear elements (diodes, MOSFETs), using state-of-the-art test equipment and software tools (LabVIEW, SPICE).
+          </p>
+        </div>
+
+        <div class="bg-gray-50 rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex justify-between items-start">
+            <div>
+              <h3 class="text-xl font-semibold text-gray-900">Teaching Assistant, ESE 1900</h3>
+              <p class="text-primary-600">University of Pennsylvania</p>
+            </div>
+            <p class="text-gray-600">Jan 2025 - Present</p>
+          </div>
+          <p class="mt-4 text-gray-600">
+            Assisted in teaching introductory electronics and redesigning labs, guiding students through fundamental circuit concepts and hands-on exercises. Selected by the professor to draft a textbook for the course.
+          </p>
+        </div>
+
+        <div class="bg-gray-50 rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex justify-between items-start">
+            <div>
+              <h3 class="text-xl font-semibold text-gray-900">Subsystem Hardware Engineer Lead</h3>
+              <p class="text-primary-600">Penn Electric Racing — Formula SAE EV</p>
+            </div>
+            <p class="text-gray-600">Sept 2024 - Present</p>
+          </div>
+          <p class="mt-4 text-gray-600">
+            Leading an 8-member team on the electrical design of the car's Dashboard and Data Acquisition (DAQ) power system. Designed in Altium and simulated the primary supply in LTspice, integrating the team's first supercapacitor-based backup circuit (safe MCU shutdown on power loss) — improving efficiency by 15% (up to 95%) and reducing board space by 20%. Also designed the team's first hardware-in-the-loop testing board (STM32, CAN, I2C, current sensing), cutting validation time by two months.
+          </p>
+        </div>
+
+        <div class="bg-gray-50 rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex justify-between items-start">
+            <div>
+              <h3 class="text-xl font-semibold text-gray-900">Intern</h3>
+              <p class="text-primary-600">Prisma Electronics</p>
+            </div>
+            <p class="text-gray-600">Summer 2023</p>
+          </div>
+          <p class="mt-4 text-gray-600">
+            Worked on PCB creation and development of new device Laros. Collaborated with designers to understand aerospace electronic component production.
+          </p>
+        </div>
+
+        <div class="bg-gray-50 rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex justify-between items-start">
+            <div>
+              <h3 class="text-xl font-semibold text-gray-900">Research Participant</h3>
+              <p class="text-primary-600">Democritus University of Thrace</p>
+            </div>
+            <p class="text-gray-600">Feb - May 2023</p>
+          </div>
+          <p class="mt-4 text-gray-600">
+            Presented a device for measuring water quality parameters to facilitate marine research as part of a student engagement initiative.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Skills Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12">Technical Skills</h2>
+      <div class="bg-white rounded-xl p-8 shadow-sm">
+        <div class="flex flex-wrap gap-4">
+          <span class="px-4 py-2 bg-gray-100 rounded-full text-gray-700">Altium</span>
+          <span class="px-4 py-2 bg-gray-100 rounded-full text-gray-700">Java</span>
+          <span class="px-4 py-2 bg-gray-100 rounded-full text-gray-700">LTspice</span>
+          <span class="px-4 py-2 bg-gray-100 rounded-full text-gray-700">SolidWorks</span>
+          <span class="px-4 py-2 bg-gray-100 rounded-full text-gray-700">Python</span>
+          <span class="px-4 py-2 bg-gray-100 rounded-full text-gray-700">Fusion 360</span>
+          <span class="px-4 py-2 bg-gray-100 rounded-full text-gray-700">Arduino</span>
+          <span class="px-4 py-2 bg-gray-100 rounded-full text-gray-700">IoT</span>
+          <span class="px-4 py-2 bg-gray-100 rounded-full text-gray-700">ESP32</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section id="education" class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12">Education</h2>
+      <div class="space-y-8">
+        <div class="bg-white rounded-xl p-8 shadow-sm">
+          <div class="flex items-center mb-4">
+            <img src="pennlogo.png" alt="Penn Logo" class="h-16 w-auto mr-4 object-contain">
+            <div>
+              <h3 class="text-xl font-semibold text-gray-900">University of Pennsylvania</h3>
+              <p class="text-primary-600">B.S.E. Electrical Engineering</p>
+              <p class="text-gray-600">Minor in Computer Science — Benjamin Franklin Scholar</p>
+              <p class="text-gray-600">Class of 2028</p>
+            </div>
+          </div>
+          <div class="mt-4">
+            <h4 class="font-medium text-gray-900">Experience & Leadership</h4>
+            <ul class="mt-2 space-y-2 text-gray-600">
+              <li>• Teaching Assistant, ESE 2150 — Electrical Circuits and Systems (2026)</li>
+              <li>• Teaching Assistant, ESE 1900 (Jan 2025 - Present)</li>
+              <li>• Hardware Engineer, Penn Electric Racing (Sept 2024 - Present)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl p-8 shadow-sm">
+          <h3 class="text-xl font-semibold text-gray-900">4th Lyceum of Alexandroupolis</h3>
+          <p class="text-gray-600">High School</p>
+          <p class="text-gray-600">Class of 2024</p>
+          <div class="mt-4">
+            <h4 class="font-medium text-gray-900">Leadership & Activities</h4>
+            <ul class="mt-2 space-y-2 text-gray-600">
+              <li>• Basketball Team Captain (3x Province Champions)</li>
+              
+              <li>• Excellence award by Ministry of Education (all junior/high school years)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12">Get in Touch</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-gray-50 rounded-xl p-8 shadow-sm">
+          <h3 class="text-xl font-semibold text-gray-900 mb-6">Contact Information</h3>
+          <div class="space-y-4">
+            <div class="flex items-center">
+              <svg class="w-6 h-6 text-primary-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+              <span class="text-gray-600">Philadelphia, USA</span>
+            </div>
+            <div class="flex items-center">
+              <svg class="w-6 h-6 text-primary-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+              </svg>
+              <a href="tel:+12675709355" class="text-gray-600 hover:text-primary-600">+1 (267) 570-9355</a>
+            </div>
+            <div class="flex items-center">
+              <svg class="w-6 h-6 text-primary-600 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+              <a href="https://linkedin.com/in/dimitrisdeliakidis" target="_blank" class="text-gray-600 hover:text-primary-600">linkedin.com/in/dimitrisdeliakidis</a>
+            </div>
+          </div>
+        </div>
+        <div class="bg-gray-50 rounded-xl p-8 shadow-sm">
+          <h3 class="text-xl font-semibold text-gray-900 mb-6">Professional Details</h3>
+          <div class="space-y-4 text-gray-600">
+            <p><strong>Current Role:</strong> Teaching Assistant at ESE 1900, University of Pennsylvania</p>
+            <p><strong>Education:</strong> B.S.E. Electrical Engineering</p>
+            <p><strong>Specialization:</strong> Minor in Computer Science</p>
+            <p><strong>Status:</strong> Benjamin Franklin Scholar</p>
+            <div class="mt-6">
+              <a href="cv.pdf" target="_blank" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                </svg>
+                Download CV
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Contact Form Section -->
+      <div class="mt-12 bg-white rounded-xl p-8 shadow-sm">
+        <h3 class="text-xl font-semibold text-gray-900 mb-6">Send me a message</h3>
+        <form id="contactForm" class="space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Name</label>
+              <input type="text" id="name" name="name" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-transparent">
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+              <input type="email" id="email" name="email" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-transparent">
+            </div>
+          </div>
+          <div>
+            <label for="subject" class="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+            <input type="text" id="subject" name="subject" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-transparent">
+          </div>
+          <div>
+            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+            <textarea id="message" name="message" rows="4" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-transparent"></textarea>
+          </div>
+          <div class="flex items-center justify-between">
+            <button type="submit" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+              </svg>
+              Send Message
+            </button>
+            <div id="formStatus" class="text-sm"></div>
+          </div>
+        </form>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-8 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center">
+        <p>&copy; 2025 Dimitris Deliakidis. All rights reserved.</p>
+        <div class="flex space-x-6">
+          <a href="#top" class="hover:text-primary-400">Back to Top</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Contact form handling with Firebase
+    document.addEventListener('DOMContentLoaded', function() {
+      const contactForm = document.getElementById('contactForm');
+      const formStatus = document.getElementById('formStatus');
+
+      if (contactForm) {
+        contactForm.addEventListener('submit', async function(e) {
+          e.preventDefault();
+          
+          const submitButton = contactForm.querySelector('button[type="submit"]');
+          const originalText = submitButton.innerHTML;
+          
+          // Show loading state
+          submitButton.disabled = true;
+          submitButton.innerHTML = `
+            <svg class="animate-spin w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            Sending...
+          `;
+
+          try {
+            // Get form data
+            const formData = new FormData(contactForm);
+            const messageData = {
+              name: formData.get('name'),
+              email: formData.get('email'),
+              subject: formData.get('subject'),
+              message: formData.get('message'),
+              timestamp: new Date().toISOString(),
+              ip: await getClientIP()
+            };
+
+            // Send to Firebase (if configured)
+            if (window.firebase && window.firebase.db) {
+              try {
+                await window.firebase.addDoc(window.firebase.collection(window.firebase.db, 'contact-messages'), messageData);
+                showStatus('Message sent successfully! I\'ll get back to you soon.', 'success');
+                contactForm.reset();
+              } catch (firebaseError) {
+                console.warn('Firebase error:', firebaseError);
+                // Fallback: send to console for now
+                console.log('Contact form submission:', messageData);
+                showStatus('Message sent successfully! I\'ll get back to you soon.', 'success');
+                contactForm.reset();
+              }
+            } else {
+              // Fallback when Firebase is not configured
+              console.log('Contact form submission:', messageData);
+              showStatus('Message sent successfully! I\'ll get back to you soon.', 'success');
+              contactForm.reset();
+            }
+
+          } catch (error) {
+            console.error('Error submitting form:', error);
+            showStatus('There was an error sending your message. Please try again.', 'error');
+          } finally {
+            // Reset button state
+            submitButton.disabled = false;
+            submitButton.innerHTML = originalText;
+          }
+        });
+      }
+
+      function showStatus(message, type) {
+        if (formStatus) {
+          formStatus.textContent = message;
+          formStatus.className = `text-sm ${type === 'success' ? 'text-green-600' : 'text-red-600'}`;
+          
+          // Clear status after 5 seconds
+          setTimeout(() => {
+            formStatus.textContent = '';
+            formStatus.className = 'text-sm';
+          }, 5000);
+        }
+      }
+
+      async function getClientIP() {
+        try {
+          const response = await fetch('https://api.ipify.org?format=json');
+          const data = await response.json();
+          return data.ip;
+        } catch (error) {
+          return 'Unknown';
+        }
+      }
+    });
+  </script>
+</body>
+</html>
