@@ -47,15 +47,19 @@
               As Subsystem Hardware Engineer Lead, I led an 8-member team on the electrical design of the car's Dashboard and Data Acquisition (DAQ) power system. The work centered on the team's first supercapacitor-based backup circuit, which holds up the MCU rail and guarantees a safe, controlled shutdown on a loss of primary power. I designed the boards in Altium and simulated the primary supply in LTspice.
             </p>
             <div class="bg-gray-50 p-6 rounded-lg mb-6">
-              <img src="per-scap-schematic.png" alt="Supercapacitor charging schematic: controller IC, synchronous buck output, SCAP logic, and input switch" class="w-full object-contain mb-2 bg-white rounded">
-              <p class="text-sm text-gray-500 text-center">The supercapacitor charging circuit: charge-controller IC, synchronous buck output, input switch, and SCAP control logic.</p>
+              <img src="PER/per-scap-schematic.png" alt="Supercapacitor charging schematic: controller IC, synchronous buck output, SCAP logic, and input switch" class="w-full object-contain mb-2 bg-white rounded">
+              <p class="text-sm text-gray-500 text-center">The supercapacitor charging circuit: charge-controller IC, synchronous buck output, input switch, and supercap IC parameters.</p>
             </div>
             <div class="bg-gray-50 p-6 rounded-lg mb-6">
-              <img src="per-power-management.png" alt="Power management schematic: ideal-diode input, 5V and 3.3V bucks, supercapacitor step-down, and load switching" class="w-full object-contain mb-2 bg-white rounded">
+              <img src="PER/per-scap-logic.png" alt="Supercapacitor control-logic schematic with test points" class="w-full object-contain mb-2 bg-white rounded">
+              <p class="text-sm text-gray-500 text-center">The SCAP control logic: charge/discharge enable, MCU handshake signals, and bring-up test points.</p>
+            </div>
+            <div class="bg-gray-50 p-6 rounded-lg mb-6">
+              <img src="PER/per-power-management.png" alt="Power management schematic: ideal-diode input, 5V and 3.3V bucks, supercapacitor step-down, and load switching" class="w-full object-contain mb-2 bg-white rounded">
               <p class="text-sm text-gray-500 text-center">Power management module: ideal-diode input protection and common-mode filtering, 5V and 3.3V synchronous bucks, the supercapacitor step-down backup, and a 5V external load switch.</p>
             </div>
             <div class="bg-gray-50 p-6 rounded-lg mb-6">
-              <img src="per-power-test-board.png" alt="Altium layout of the power test board" class="w-full max-h-[28rem] object-contain mb-2 bg-white rounded">
+              <img src="PER/per-power-test-board.png" alt="Altium layout of the power test board" class="w-full max-h-[28rem] object-contain mb-2 bg-white rounded">
               <p class="text-sm text-gray-500 text-center">Altium layout of the power test board used to bring up and validate the supply.</p>
             </div>
           </section>
@@ -68,7 +72,7 @@
               <li>Reduced board space by 20%</li>
               <li>Primary supply designed in Altium and simulated in LTspice</li>
             </ul>
-            <a href="per-daqdash-schematic.pdf" target="_blank" class="inline-flex items-center mt-6 px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700">
+            <a href="PER/per-daqdash-schematic.pdf" target="_blank" class="inline-flex items-center mt-6 px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700">
               <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
               </svg>
@@ -91,11 +95,11 @@
             <div class="bg-gray-50 p-6 rounded-lg mb-6">
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <img src="per-daqdash-render.png" alt="3D render of the REV11 DAQDASH v2 board" class="w-full object-contain mb-2 bg-white rounded">
+                  <img src="PER/per-daqdash-render.png" alt="3D render of the REV11 DAQDASH v2 board" class="w-full object-contain mb-2 bg-white rounded">
                   <p class="text-sm text-gray-500 text-center">3D render of the REV11 DAQDASH v2 board.</p>
                 </div>
                 <div>
-                  <img src="per-daqdash-layout.png" alt="Altium board layout of the DAQDASH" class="w-full object-contain mb-2 bg-white rounded">
+                  <img src="PER/per-daqdash-layout.png" alt="Altium board layout of the DAQDASH" class="w-full object-contain mb-2 bg-white rounded">
                   <p class="text-sm text-gray-500 text-center">Altium board layout.</p>
                 </div>
               </div>
@@ -103,11 +107,11 @@
             <div class="bg-gray-50 p-6 rounded-lg mb-6">
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <img src="per-daqdash-front.jpg" alt="Assembled DAQDASH board, front" class="w-full h-96 object-contain mb-2 bg-white rounded">
+                  <img src="PER/per-daqdash-front.jpg" alt="Assembled DAQDASH board, front" class="w-full h-96 object-contain mb-2 bg-white rounded">
                   <p class="text-sm text-gray-500 text-center">The assembled board, populated and ready for bring-up.</p>
                 </div>
                 <div>
-                  <img src="per-daqdash-back.jpg" alt="Assembled DAQDASH board, back" class="w-full h-96 object-contain mb-2 bg-white rounded">
+                  <img src="PER/per-daqdash-back.jpg" alt="Assembled DAQDASH board, back" class="w-full h-96 object-contain mb-2 bg-white rounded">
                   <p class="text-sm text-gray-500 text-center">Reverse side of the assembled board.</p>
                 </div>
               </div>
