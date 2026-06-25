@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acoustic Droplet Bioprinting Research — RWTH Aachen</title>
+    <title>Acoustic Droplet Bioprinting Research: RWTH Aachen</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -45,7 +45,7 @@
                 <div>
                     <span class="inline-block px-3 py-1 mb-4 text-sm font-medium rounded-full bg-blue-100 text-primary-700">Summer Research · RWTH Aachen University</span>
                     <h1 class="text-4xl font-bold text-gray-900 mb-6">Acoustic Droplet Bioprinting</h1>
-                    <p class="text-xl text-gray-600 mb-8">Building the computer-vision and instrumentation toolchain for an acoustic droplet-ejection bioprinter — turning printed droplet grids into quantitative, repeatable quality metrics.</p>
+                    <p class="text-xl text-gray-600 mb-8">Building the computer-vision and instrumentation toolchain for an acoustic droplet-ejection bioprinter, turning printed droplet grids into quantitative, repeatable quality metrics.</p>
                     <div class="bg-gray-50 rounded-lg p-6 mb-8">
                         <h2 class="text-xl font-semibold mb-4">Project Overview</h2>
                         <ul class="space-y-2 text-gray-600">
@@ -92,7 +92,7 @@
                             </p>
                             <h3 class="text-xl font-semibold mb-4 mt-6">Computer-Vision Droplet Detection</h3>
                             <p class="text-gray-600 mb-4">
-                                The detector uses a classical CV pipeline — CLAHE local-contrast normalization, background removal, and a fusion of small-blob, morphological, Laplacian-of-Gaussian, and Hough-circle responses — then filters candidates by radius, circularity, contrast, and position before fitting them against the expected grid. A configurable detector handles arbitrary grids and ROIs, while a fixed 6×6 calibration detector feeds the automated QA suite.
+                                The detector uses a classical CV pipeline (CLAHE local-contrast normalization, background removal, and a fusion of small-blob, morphological, Laplacian-of-Gaussian, and Hough-circle responses), then filters candidates by radius, circularity, contrast, and position before fitting them against the expected grid. A configurable detector handles arbitrary grids and ROIs, while a fixed 6×6 calibration detector feeds the automated QA suite.
                             </p>
                             <h3 class="text-xl font-semibold mb-4 mt-6">Automated Quality Assurance</h3>
                             <ul class="list-disc pl-5 space-y-2 text-gray-600">
@@ -110,7 +110,7 @@
                         <h2 class="text-2xl font-bold mb-6">Instrumentation & Data Pipeline</h2>
                         <img src="aachen-grid.png" alt="Bioprinter camera view with detected droplets" class="w-full rounded-lg mb-6 bg-gray-900 p-2 max-h-96 object-contain">
                         <p class="text-gray-600 mb-4">
-                            To make the system usable on a shared lab machine, I wrote a local bioprinter-to-laptop transfer inbox (web UI + API) that automatically runs the full calibration and QA workflow whenever new run images arrive. I also built OPBOX ultrasound telemetry tooling: a standard-library wrapper that launches the unmodified OPBOX GUI and records peak position and amplitude to CSV, plus an ADS-based watcher for live PLC peak data — all offline, with no extra drivers.
+                            To make the system usable on a shared lab machine, I wrote a local bioprinter-to-laptop transfer inbox (web UI + API) that automatically runs the full calibration and QA workflow whenever new run images arrive. I also built OPBOX ultrasound telemetry tooling: a standard-library wrapper that launches the unmodified OPBOX GUI and records peak position and amplitude to CSV, plus an ADS-based watcher for live PLC peak data, all offline, with no extra drivers.
                         </p>
                         <p class="text-gray-600">
                             A separate Arduino MAX6675 thermocouple firmware and live serial plotter logged bio-ink temperature during prints, and an extraction tool parsed OPBOX documentation and G-code into structured CSV/JSON to map controller parameters to dashboard values.
@@ -173,7 +173,7 @@
                             <p><strong>Institution:</strong> RWTH Aachen University</p>
                             <p><strong>Field:</strong> Acoustic droplet bioprinting</p>
                             <p><strong>Term:</strong> Summer 2026</p>
-                            <p><strong>Role:</strong> Research — CV & instrumentation</p>
+                            <p><strong>Role:</strong> Research: CV & instrumentation</p>
                         </div>
                     </div>
                 </div>

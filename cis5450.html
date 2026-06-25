@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CIS 5450 — Predicting 30-Day Readmission in Diabetic Patients</title>
+    <title>CIS 5450: Predicting 30-Day Readmission in Diabetic Patients</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -45,7 +45,7 @@
                 <div>
                     <span class="inline-block px-3 py-1 mb-4 text-sm font-medium rounded-full bg-blue-100 text-primary-700">CIS 5450 · Big Data Analytics</span>
                     <h1 class="text-4xl font-bold text-gray-900 mb-6">Predicting 30-Day Readmission in Diabetic Patients</h1>
-                    <p class="text-xl text-gray-600 mb-8">An end-to-end big-data ML pipeline that flags diabetic patients at high risk of 30-day hospital readmission — so care teams can target transitional-care resources and avoid CMS penalties.</p>
+                    <p class="text-xl text-gray-600 mb-8">An end-to-end big-data ML pipeline that flags diabetic patients at high risk of 30-day hospital readmission, so care teams can target transitional-care resources and avoid CMS penalties.</p>
                     <div class="bg-gray-50 rounded-lg p-6 mb-8">
                         <h2 class="text-xl font-semibold mb-4">Project Overview</h2>
                         <ul class="space-y-2 text-gray-600">
@@ -78,7 +78,7 @@
                 </div>
                 <div>
                     <img src="cis5450-roc-pr.jpg" alt="ROC and Precision-Recall curves for the three models" class="rounded-lg shadow-xl w-full bg-white p-3">
-                    <p class="mt-3 text-sm text-gray-500 text-center">Model comparison — XGBoost and Logistic Regression tie at ROC AUC ≈ 0.62, both beating the 11.3% base rate on precision–recall.</p>
+                    <p class="mt-3 text-sm text-gray-500 text-center">Model comparison: XGBoost and Logistic Regression tie at ROC AUC ≈ 0.62, both beating the 11.3% base rate on precision-recall.</p>
                 </div>
             </div>
         </div>
@@ -94,7 +94,7 @@
                         <h2 class="text-2xl font-bold mb-6">Why It Matters & the Problem</h2>
                         <div class="prose max-w-none">
                             <p class="text-gray-600 mb-4">
-                                Under the CMS Hospital Readmissions Reduction Program (HRRP), hospitals face direct financial penalties for excess 30-day readmissions. Identifying high-risk diabetic patients <em>before</em> they are discharged is both a clinical and an operational priority: a model that flags them at discharge lets hospitals concentrate transitional-care resources — medication reconciliation, discharge education — where they have the highest expected impact.
+                                Under the CMS Hospital Readmissions Reduction Program (HRRP), hospitals face direct financial penalties for excess 30-day readmissions. Identifying high-risk diabetic patients <em>before</em> they are discharged is both a clinical and an operational priority: a model that flags them at discharge lets hospitals concentrate transitional-care resources (medication reconciliation, discharge education) where they have the highest expected impact.
                             </p>
                             <p class="text-gray-600 mb-4">
                                 We framed it as a binary classification problem (readmitted within 30 days = 1, otherwise 0) over ~100k US diabetic hospital encounters. With only an 11.3% positive class, accuracy is a misleading metric, so we optimized and evaluated on <strong>ROC AUC</strong> and <strong>F1 / average precision</strong> instead.
@@ -119,10 +119,10 @@
                         </div>
                         <img src="cis5450-threshold.jpg" alt="Precision/recall/F1 vs probability threshold" class="w-full rounded-lg my-6 bg-white p-3 border border-gray-100">
                         <p class="text-gray-600 mb-4">
-                            XGBoost edged out Logistic Regression for the best ROC AUC (~0.62 vs Random Forest's 0.59), and both beat the base-rate baseline on precision–recall. Because the default 0.5 threshold yields near-zero recall under this imbalance, we calibrated the decision threshold down to ~0.14 (best-F1) to prioritize catching true readmissions — the clinically correct trade-off, since missing a high-risk patient is far costlier than an extra follow-up call.
+                            XGBoost edged out Logistic Regression for the best ROC AUC (~0.62 vs Random Forest's 0.59), and both beat the base-rate baseline on precision-recall. Because the default 0.5 threshold yields near-zero recall under this imbalance, we calibrated the decision threshold down to ~0.14 (best-F1) to prioritize catching true readmissions, the clinically correct trade-off, since missing a high-risk patient is far costlier than an extra follow-up call.
                         </p>
                         <p class="text-gray-600">
-                            Three statistical hypotheses were all rejected (p &lt; 0.05): HbA1c testing, emergency admission, and a higher medication count each associate with elevated readmission risk. The dominant predictor overall was <strong>prior utilization</strong> (<code>number_inpatient</code> and the engineered <code>total_prior_visits</code>) — outweighing any single lab value.
+                            Three statistical hypotheses were all rejected (p &lt; 0.05): HbA1c testing, emergency admission, and a higher medication count each associate with elevated readmission risk. The dominant predictor overall was <strong>prior utilization</strong> (<code>number_inpatient</code> and the engineered <code>total_prior_visits</code>), outweighing any single lab value.
                         </p>
                     </div>
 
@@ -176,7 +176,7 @@
                     <div class="bg-white rounded-lg p-6 shadow-sm">
                         <h3 class="text-xl font-semibold mb-4">Details</h3>
                         <div class="space-y-3 text-gray-600">
-                            <p><strong>Course:</strong> CIS 5450 — Big Data Analytics, University of Pennsylvania</p>
+                            <p><strong>Course:</strong> CIS 5450: Big Data Analytics, University of Pennsylvania</p>
                             <p><strong>Task:</strong> Binary classification (30-day readmission)</p>
                             <p><strong>Team:</strong> P. Giadikiaroglou, C. Wang, P. Galanis, D. Deliakidis</p>
                         </div>

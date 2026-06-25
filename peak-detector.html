@@ -40,14 +40,14 @@
         <section class="mb-8">
           <h2 class="text-2xl font-semibold text-gray-900 mb-4">Project Overview</h2>
           <p class="text-gray-600 mb-4">
-            Props to professor Sid who I was talking to and told me: this would be a great 112 hacking project! This project makes a circuit that can detect the peak value of an incoming signal. Our goal is to find and output the peak value of an incoming wave — for example, a sine wave.
+            Props to professor Sid who I was talking to and told me: this would be a great 112 hacking project! This project makes a circuit that can detect the peak value of an incoming signal. Our goal is to find and output the peak value of an incoming wave, for example a sine wave.
           </p>
         </section>
 
         <section class="mb-8">
           <h2 class="text-2xl font-semibold text-gray-900 mb-4">Basic Circuit Design</h2>
           <p class="text-gray-600 mb-4">
-            This can be achieved by wiring a diode and a capacitor in a specific configuration. The capacitor gets charged to the highest value of the incoming wave. When the input signal is rising, the diode conducts, allowing the capacitor to charge up. But once the input starts to drop, the diode becomes reverse biased and blocks the current from flowing back — preventing the capacitor from discharging. Just like that, the capacitor "holds" the peak voltage.
+            This can be achieved by wiring a diode and a capacitor in a specific configuration. The capacitor gets charged to the highest value of the incoming wave. When the input signal is rising, the diode conducts, allowing the capacitor to charge up. But once the input starts to drop, the diode becomes reverse biased and blocks the current from flowing back, preventing the capacitor from discharging. Just like that, the capacitor "holds" the peak voltage.
           </p>
           <div class="bg-gray-50 p-6 rounded-lg mb-6">
             <img src="diagram.jpg" alt="Basic Peak Detector Circuit" class="mx-auto max-h-64 w-auto object-contain mb-4">
@@ -75,7 +75,7 @@
         <section class="mb-8">
           <h2 class="text-2xl font-semibold text-gray-900 mb-4">The Op-Amp Solution</h2>
           <p class="text-gray-600 mb-4">
-            One solution to this is to use a precision peak detector using an op-amp in combination with the diode — the op-amp compensates for the voltage drop, allowing the capacitor to charge right up to the actual peak.
+            One solution to this is to use a precision peak detector using an op-amp in combination with the diode: the op-amp compensates for the voltage drop, allowing the capacitor to charge right up to the actual peak.
           </p>
           <div class="bg-gray-50 p-6 rounded-lg mb-6">
             <h3 class="text-xl font-semibold mb-4">Op-Amp Working Principle</h3>
